@@ -1,13 +1,70 @@
 <html>
 <body>
-    <script type="text/javascript">
-        var sse = new EventSource('http://localhost:8080/stream/tweets');
-        sse.onmessage = function (evt) {
-            var el = document.getElementById('flux');
-            el.appendChild(document.createTextNode(evt.data));
-            el.appendChild(document.createElement('br'));
-        };
-    </script>
-    <div id="flux"></div>
+<script type="text/javascript">
+    var sse = new EventSource('http://localhost:8080/stock');
+    var lastFaceBookValue = 0;
+    var lastAppleValue = 0;
+    var lastNetflixValue = 0;
+    var lastGoogleValue = 0;
+
+    sse.onmessage = function (evt) {
+        var fb = document.getElementById('fb');
+        fb.innerText = '';
+        let faceBookStockPrice = JSON.parse(event.data).find(it => it.name.toUpperCase() == 'FB').price;
+        fb.innerText = faceBookStockPrice;
+
+        if(faceBookStockPrice > lastFaceBookValue){
+            fb.style.color = 'green';
+        }else{
+            fb.style.color = 'red';
+        }
+
+
+
+        var apple = document.getElementById('appl');
+        apple.innerText = '';
+        let appleStockPrice = JSON.parse(event.data).find(it => it.name.toUpperCase() == 'AAPL').price;
+        apple.innerText = appleStockPrice;
+
+        if(appleStockPrice > lastAppleValue){
+            apple.style.color = 'green';
+        }else{
+            apple.style.color = 'red';
+        }
+
+
+        var nflx = document.getElementById('nflx');
+        nflx.innerText = '';
+        let nflxStockPrice = JSON.parse(event.data).find(it => it.name.toUpperCase() == 'NFLX').price;
+        nflx.innerText = nflxStockPrice;
+
+        if(nflxStockPrice > lastNetflixValue){
+            nflx.style.color = 'green';
+        }else{
+            nflx.style.color = 'red';
+        }
+
+
+        var googl = document.getElementById('googl');
+        googl.innerText = '';
+        let googlStockPrice = JSON.parse(event.data).find(it => it.name.toUpperCase() == 'GOOGL').price;
+        googl.innerText = googlStockPrice;
+
+        if(googlStockPrice > lastGoogleValue){
+            googl.style.color = 'green';
+        }else{
+            googl.style.color = 'red';
+        }
+    };
+</script>
+
+<div style="display: flex;font-size: 50px">FACEBOOK : <div id="fb" style="font-weight: bold"></div></div></br>
+
+<div style="display: flex;font-size: 50px">APPLE : <div id="appl" style="font-weight: bold"></div></div></br>
+
+<div style="display: flex;font-size: 50px">NETFLIX : <div id="nflx" style="font-weight: bold"></div></div></br>
+
+<div style="display: flex;font-size: 50px">GOOGLE : <div id="googl" style="font-weight: bold"></div></div></br>
+
 </body>
 </html>
