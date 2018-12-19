@@ -23,11 +23,6 @@ public final class PushVSPull {
 	}
 
 
-
-
-
-
-
 	private static void pushExample() {
 		final List<String> list = Lists.newArrayList("Java", "C", "C++", "PHP", "Go");
 

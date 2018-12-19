@@ -17,23 +17,23 @@ public class FutureExample {
         /**
          * Java Future API Added In java 5
          */
-//        System.out.println("calculating square for 5");
-//        Future<Integer> result = calculate(5);
-//        System.out.println(result.get());
+        System.out.println("calculating square for 5");
+        Future<Integer> result = calculate(5);
+        System.out.println(result.get());
 
         /**
          * CompletableFuture is used for asynchronous programming in Java.
          * Run Async does not return any value
          *
          */
-//        completableFutureRunAsync();
+        completableFutureRunAsync().get();
 
         /**
          * CompletableFuture is used for asynchronous programming in Java.
          * Supply Async returns a value
          *
          */
-//        System.out.println(completableFutureSupplyAsync().get());
+        System.out.println(completableFutureSupplyAsync().get());
 
 
         /**
@@ -41,18 +41,18 @@ public class FutureExample {
          * Chaining call together
          *
          */
-//        System.out.println(completableFutureSupplyAsyncThenApply().get());
+        System.out.println(completableFutureSupplyAsyncThenApply().get());
 
         /**
          * Google ListenableFuture which allows to pass callback
          * http://callbackhell.com/
          */
-//        googleListenableFutureExample();
+        googleListenableFutureExample();
 
         /**
          * Callback Hell
          */
-//        callbackHell();
+        callbackHell();
 
     }
 
@@ -63,8 +63,8 @@ public class FutureExample {
         });
     }
 
-    public void completableFutureRunAsync() {
-        CompletableFuture.runAsync(() -> {
+    public Future<Void> completableFutureRunAsync() {
+        return CompletableFuture.runAsync(() -> {
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (Exception e) {

@@ -14,6 +14,7 @@
         fb.innerText = faceBookStockPrice;
 
         if(faceBookStockPrice > lastFaceBookValue){
+            lastFaceBookValue = faceBookStockPrice
             fb.style.color = 'green';
         }else{
             fb.style.color = 'red';
@@ -27,8 +28,10 @@
         apple.innerText = appleStockPrice;
 
         if(appleStockPrice > lastAppleValue){
+            lastAppleValue = appleStockPrice
             apple.style.color = 'green';
         }else{
+            lastAppleValue = appleStockPrice
             apple.style.color = 'red';
         }
 
@@ -39,8 +42,10 @@
         nflx.innerText = nflxStockPrice;
 
         if(nflxStockPrice > lastNetflixValue){
+            lastNetflixValue = nflxStockPrice
             nflx.style.color = 'green';
         }else{
+            lastNetflixValue = nflxStockPrice
             nflx.style.color = 'red';
         }
 
@@ -51,8 +56,10 @@
         googl.innerText = googlStockPrice;
 
         if(googlStockPrice > lastGoogleValue){
+            lastGoogleValue = googlStockPrice
             googl.style.color = 'green';
         }else{
+            lastGoogleValue = googlStockPrice
             googl.style.color = 'red';
         }
     };
